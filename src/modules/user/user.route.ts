@@ -1,9 +1,11 @@
 import express from "express";
+import { UserController } from "./user.controller";
 
 const router = express.Router();
 
-router.get("/", (req, res) => {
-  res.send("Hello mama. I am using prisma");
-});
+router.post("/create-user", UserController.insertIntoDB);
+router.post("/profile", UserController.insertOrUpdateProfile);
+router.get("/", UserController.getAllUser);
+router.get("/:id", UserController.getSingleUser);
 
 export const UserRoutes = router;
